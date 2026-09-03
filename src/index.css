@@ -534,18 +534,39 @@ body {
   animation-play-state: paused; /* Hover karne par scroll ruki rhegi */
 }
 
+/* Bigger Logo Marquee Cards */
 .logo-marquee-card {
-  width: 130px;
-  height: 75px;
+  width: 170px;            /* Purana 130px tha, ab 170px ho gaya hai */
+  height: 95px;            /* Purana 75px tha, ab 95px ho gaya hai */
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 16px;           /* Padding thodi badha di taaki logos clear dikhein */
   transition: all 0.3s ease;
   flex-shrink: 0;
+}
+
+.logo-marquee-card:hover {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: #a855f7;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.35);
+}
+
+.logo-marquee-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: opacity(0.9);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logo-marquee-card:hover img {
+  filter: opacity(1) brightness(1.1);
+  transform: scale(1.05);  /* Hover karne par image halki si zoom hogi */
 }
 
 .logo-marquee-card:hover {

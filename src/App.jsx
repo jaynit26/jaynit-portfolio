@@ -166,15 +166,17 @@ export default function App() {
 
               <div className="tech-tags">
                 <span className="tech-tag">Microsoft 365</span>
-                <span className="tech-tag">VMware ESXi</span>
+                <span className="tech-tag">VMware</span>
+                <span className="tech-tag">Hyper-V</span>
                 <span className="tech-tag">Synology NAS</span>
-                <span className="tech-tag">Hitachi HCP</span>
+                <span className="tech-tag">Veeam Backup & Replication</span>
+                <span className="tech-tag">Commvault</span>
               </div>
 
               <ul className="achievements-list">
-                <li>Managed migration of 200+ users to M365 tenant seamlessly.</li>
-                <li>Deployed and upgraded VMware ESXi hosts & vCenter Server.</li>
-                <li>Troubleshot Dell servers, Synology NAS, & HCP storage.</li>
+                <li>Performed Data Center Migration & Modernization, including Microsoft 365, VMware vSphere/ESXi, Dell Servers and Synology NAS</li>
+                <li>Managed deployment, upgrades, configuration, security, backup, and troubleshooting across virtualized and storage environments.</li>
+                <li>Executed infrastructure modernization and optimization to improve availability, performance, scalability, security, and minimize downtime.</li>
               </ul>
 
               <div className="card-buttons">
@@ -197,9 +199,13 @@ export default function App() {
               <div className="card-location">📍 Vadodara, Gujarat</div>
 
               <div className="tech-tags">
-                <span className="tech-tag">RHEL 8.7</span>
+                <span className="tech-tag">RHEL Server</span>
+                <span className="tech-tag">Windows Server</span>
                 <span className="tech-tag">Array Load Balancers</span>
                 <span className="tech-tag">Trend Micro</span>
+                <span className="tech-tag">Hitachi Storage</span>
+                <span className="tech-tag">Enlight 360</span>
+                <span className="tech-tag">Sophos</span>
               </div>
 
               <ul className="achievements-list">
