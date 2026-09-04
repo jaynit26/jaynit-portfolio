@@ -596,3 +596,190 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Modal Overlay Styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 2, 20, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #ec4899;
+}
+
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-right: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+.modal-details-list {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-details-list li {
+  position: relative;
+  padding-left: 22px;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.modal-details-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: #c084fc;
+}
+
+.modal-cert-preview img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cert-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  color: #c084fc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* Vertical Timeline Container */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Center Vertical Line */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: linear-gradient(180deg, #a855f7, #ec4899, #3b82f6);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Timeline Item Base */
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* Left & Right Alignment */
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+/* FIX: Perfect Center Badge/Rocket Icon Positioning */
+.timeline-badge {
+  position: absolute;
+  top: 20px;
+  width: 46px;
+  height: 46px;
+  background: #0f172a;
+  border: 2px solid #a855f7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Rocket Icon Position for Left Cards */
+.timeline-item.left .timeline-badge {
+  right: -23px;
+}
+
+/* Rocket Icon Position for Right Cards */
+.timeline-item.right .timeline-badge {
+  left: -23px;
+}
+
+/* Hover Effect on Badge */
+.timeline-item:hover .timeline-badge {
+  transform: scale(1.15) rotate(10deg);
+  border-color: #ec4899;
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.8);
+}
+
+/* Mobile Responsive Fix */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 15px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-item.left .timeline-badge,
+  .timeline-item.right .timeline-badge {
+    left: 8px;
+    right: auto;
+  }
+}
