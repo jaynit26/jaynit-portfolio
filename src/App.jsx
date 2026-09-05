@@ -1,166 +1,129 @@
 import React, { useState, useEffect } from 'react';
+import CountUpModule from 'react-countup';
+const CountUp = CountUpModule.default || CountUpModule;
+import { useInView } from 'react-intersection-observer';
 import profile from './assets/profile.jpg';
+
+// Pure CSS Modern Floating Particles Component
+const ParticleBackground = () => {
+  return (
+    <div className="bg-glow">
+      <div className="blob blob-1"></div>
+      <div className="blob blob-2"></div>
+      <div className="blob blob-3"></div>
+    </div>
+  );
+};
 
 // Distinct Company Logos Array with Unique URLs
 const companyLogos = [
-  {
-    id: 1,
-    name: "GETCO",
-    imgUrl: "/logos/company1.png",
-    url: "https://www.getcogujarat.com/getco_newsite/index.php"
-  },
-  {
-    id: 2,
-    name: "GSFC",
-    imgUrl: "/logos/company2.png",
-    url: "https://www.gsfclimited.com"
-  },
-  {
-    id: 3,
-    name: "Monachem",
-    imgUrl: "/logos/company3.png",
-    url: "https://www.monachem.com/"
-  },
-  {
-    id: 4,
-    name: "Shreedhargroup",
-    imgUrl: "/logos/company4.png",
-    url: "https://shreedhargroup.com/"
-  },
-  {
-    id: 5,
-    name: "Keshavencon",
-    imgUrl: "/logos/company5.png",
-    url: "https://keshavencon.com"
-  },
-  {
-    id: 6,
-    name: "Navrachana University",
-    imgUrl: "/logos/company6.png",
-    url: "https://nuv.ac.in"
-  },
-  {
-    id: 7,
-    name: "stellarformulations",
-    imgUrl: "/logos/company7.png",
-    url: "https://stellarformulations.in/"
-  },
-  {
-    id: 8,
-    name: "Rishabh Software",
-    imgUrl: "/logos/company8.png",
-    url: "https://www.rishabhsoft.com"
-  },
-  {
-    id: 9,
-    name: "Arteeflow",
-    imgUrl: "/logos/company9.png",
-    url: "https://www.arteeflow.com/"
-  },
-  {
-    id: 10,
-    name: "Gulbrandsen",
-    imgUrl: "/logos/company10.png",
-    url: "https://gulbrandsen.com/"
-  },
-  {
-    id: 11,
-    name: "Rishifibc",
-    imgUrl: "/logos/company11.png",
-    url: "https://www.rishifibc.com/"
-  },
-  {
-    id: 12,
-    name: "Ace Technologies Group",
-    imgUrl: "/logos/company12.png",
-    url: "https://acetechnologiesgroup.com/"
-  },
-  {
-    id: 13,
-    name: "PDIL",
-    imgUrl: "/logos/company13.png",
-    url: "https://www.pdilin.com/"
-  },
-  {
-    id: 14,
-    name: "Waaree Energies",
-    imgUrl: "/logos/company14.png",
-    url: "https://www.waaree.com/"
-  },
-  {
-    id: 15,
-    name: "TBEA India",
-    imgUrl: "/logos/company15.png",
-    url: "https://www.tbeaindia.com/"
-  },
-  {
-    id: 16,
-    name: "BDR Pharma",
-    imgUrl: "/logos/company16.png",
-    url: "https://www.bdrpharma.com/"
-  },
-  {
-    id: 17,
-    name: "Advanced Systek",
-    imgUrl: "/logos/company17.png",
-    url: "https://advancedsystek.com/"
-  },
-  {
-    id: 18,
-    name: "L&T Hydrocarbon Engineering",
-    imgUrl: "/logos/company18.png",
-    url: "https://lntenergy.com/"
-  },
-  {
-    id: 19,
-    name: "Decbectochem",
-    imgUrl: "/logos/company19.png",
-    url: "https://www.decbectochem.com/"
-  },
-  {
-    id: 20,
-    name: "Shaily",
-    imgUrl: "/logos/company20.png",
-    url: "https://shaily.com/"
-  },
-  {
-    id: 21,
-    name: "`Cosmos",
-    imgUrl: "/logos/company21.png",
-    url: "https://cosmos.in/"
-  },
-  {
-    id: 22,
-    name: " L&T Energy",
-    imgUrl: "/logos/company22.png",
-    url: "https://lntenergy.com/"
-  },
-  {
-    id: 23,
-    name: "Siddhi Green",
-    imgUrl: "/logos/company23.png",
-    url: "https://siddhigreen.com/"
-  },
-  {
-    id: 24,
-    name: "Tektron ",
-    imgUrl: "/logos/company24.png",
-    url: "https://tektronled.com/"
-  },
-  {
-    id: 25,
-    name: "Servilink Systems",
-    imgUrl: "/logos/company25.png",
-    url: "https://www.servilinksystems.com/"
-  }
+  { id: 1, name: "GETCO", imgUrl: "/logos/company1.png", url: "https://www.getcogujarat.com/getco_newsite/index.php" },
+  { id: 2, name: "GSFC", imgUrl: "/logos/company2.png", url: "https://www.gsfclimited.com" },
+  { id: 3, name: "Monachem", imgUrl: "/logos/company3.png", url: "https://www.monachem.com/" },
+  { id: 4, name: "Shreedhargroup", imgUrl: "/logos/company4.png", url: "https://shreedhargroup.com/" },
+  { id: 5, name: "Keshavencon", imgUrl: "/logos/company5.png", url: "https://keshavencon.com" },
+  { id: 6, name: "Navrachana University", imgUrl: "/logos/company6.png", url: "https://nuv.ac.in" },
+  { id: 7, name: "stellarformulations", imgUrl: "/logos/company7.png", url: "https://stellarformulations.in/" },
+  { id: 8, name: "Rishabh Software", imgUrl: "/logos/company8.png", url: "https://www.rishabhsoft.com" },
+  { id: 9, name: "Arteeflow", imgUrl: "/logos/company9.png", url: "https://www.arteeflow.com/" },
+  { id: 10, name: "Gulbrandsen", imgUrl: "/logos/company10.png", url: "https://gulbrandsen.com/" },
+  { id: 11, name: "Rishifibc", imgUrl: "/logos/company11.png", url: "https://www.rishifibc.com/" },
+  { id: 12, name: "Ace Technologies Group", imgUrl: "/logos/company12.png", url: "https://acetechnologiesgroup.com/" },
+  { id: 13, name: "PDIL", imgUrl: "/logos/company13.png", url: "https://www.pdilin.com/" },
+  { id: 14, name: "Waaree Energies", imgUrl: "/logos/company14.png", url: "https://www.waaree.com/" },
+  { id: 15, name: "TBEA India", imgUrl: "/logos/company15.png", url: "https://www.tbeaindia.com/" },
+  { id: 16, name: "BDR Pharma", imgUrl: "/logos/company16.png", url: "https://www.bdrpharma.com/" },
+  { id: 17, name: "Advanced Systek", imgUrl: "/logos/company17.png", url: "https://advancedsystek.com/" },
+  { id: 18, name: "L&T Hydrocarbon Engineering", imgUrl: "/logos/company18.png", url: "https://lntenergy.com/" },
+  { id: 19, name: "Decbectochem", imgUrl: "/logos/company19.png", url: "https://www.decbectochem.com/" },
+  { id: 20, name: "Shaily", imgUrl: "/logos/company20.png", url: "https://shaily.com/" },
+  { id: 21, name: "Cosmos", imgUrl: "/logos/company21.png", url: "https://cosmos.in/" },
+  { id: 22, name: "L&T Energy", imgUrl: "/logos/company22.png", url: "https://lntenergy.com/" },
+  { id: 23, name: "Siddhi Green", imgUrl: "/logos/company23.png", url: "https://siddhigreen.com/" },
+  { id: 24, name: "Tektron", imgUrl: "/logos/company24.png", url: "https://tektronled.com/" },
+  { id: 25, name: "Servilink Systems", imgUrl: "/logos/company25.png", url: "https://www.servilinksystems.com/" }
 ];
+
+// Achievement Counter Component
+const AchievementCounter = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const stats = [
+    { number: 250, suffix: "+", label: "Users Migrated" },
+    { number: 25, suffix: "+", label: "Clients Served" },
+    { number: 50, suffix: "+", label: "Projects Delivered" },
+    { number: 150, suffix: "+", label: "Servers Managed" },
+    { number: 250, suffix: "+", label: "VMs Managed" },
+    { number: 20, suffix: "+", label: "Storage Systems" },
+    { number: 8, suffix: "+", label: "OEM Partners" },
+    { number: 99, suffix: "%", label: "Client Satisfaction" },
+  ];
+
+  return (
+    <section ref={ref} className="container animate-item">
+      <div 
+        className="glass-section" 
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          padding: '36px 24px'
+        }}
+      >
+        <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>
+            Key Performance <span className="gradient-text">Metrics</span>
+          </h2>
+          <p style={{ color: '#c084fc', fontSize: '0.9rem', marginTop: '4px' }}>
+            Proven track record across enterprise cloud, infrastructure, and operations
+          </p>
+        </div>
+
+        <div 
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '16px',
+            textAlign: 'center'
+          }}
+        >
+          {stats.map((stat, index) => (
+            <div 
+              key={index} 
+              className="stat-card"
+              style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '12px',
+                padding: '20px 12px'
+              }}
+            >
+              <h4 style={{ fontSize: '2rem', fontWeight: '800', color: '#38bdf8', marginBottom: '4px' }}>
+                {inView ? (
+                  <CountUp start={0} end={stat.number} duration={8} suffix={stat.suffix} />
+                ) : (
+                  `0${stat.suffix}`
+                )}
+              </h4>
+              <p style={{ color: '#d1d5db', fontSize: '0.85rem', fontWeight: '500', lineHeight: '1.3' }}>
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default function App() {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState('Initializing...');
   const [loading, setLoading] = useState(true);
 
-  // Modal State for Popups
   const [activeModal, setActiveModal] = useState(null); 
 
   useEffect(() => {
@@ -206,6 +169,8 @@ export default function App() {
 
   return (
     <div>
+      <ParticleBackground />
+
       {/* Pre-loader */}
       <div className={`loader-screen ${!loading ? 'fade-out' : ''}`}>
         <div className="loader-title">L O A D I N G</div>
@@ -219,7 +184,7 @@ export default function App() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="nav-content">
-          <div className="logo">Jaynit  Mishra</div>
+          <div className="logo">Jaynit Mishra</div>
           <ul className="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
@@ -244,6 +209,9 @@ export default function App() {
         </div>
       </header>
 
+      {/* Achievement Counter */}
+      <AchievementCounter />
+
       {/* Supported Companies Marquee */}
       <section className="container animate-item">
         <div className="glass-section" style={{ overflow: 'hidden' }}>
@@ -258,19 +226,18 @@ export default function App() {
 
           <div className="logo-marquee-container">
             <div className="logo-marquee-track">
-              {/* Naya Updated Code (Hyperlink Ke Sath) */}
-{[...companyLogos, ...companyLogos].map((logo, index) => (
-  <a 
-    key={index} 
-    href={logo.url} 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="logo-marquee-card"
-    style={{ cursor: 'pointer' }}
-  >
-    <img src={logo.imgUrl} alt={logo.name} title={logo.name} />
-  </a>
-))}
+              {[...companyLogos, ...companyLogos].map((logo, index) => (
+                <a 
+                  key={index} 
+                  href={logo.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="logo-marquee-card"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <img src={logo.imgUrl} alt={logo.name} title={logo.name} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -327,7 +294,6 @@ export default function App() {
                 <li>Executed infrastructure modernization and optimization to improve availability, performance, scalability, security, and minimize downtime.</li>
               </ul>
 
-              {/* Clickable Buttons with Handlers */}
               <div className="card-buttons">
                 <button 
                   className="btn-view" 
@@ -363,7 +329,7 @@ export default function App() {
                         </div>
 
                         <div style={{ marginBottom: '16px' }}>
-                          <h5 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: 'px' }}>
+                          <h5 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
                             Active Directory & Security Controls
                           </h5>
                           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#d1d5db' }}>
@@ -435,7 +401,7 @@ export default function App() {
                     title: "On-site Support Engineer — GETCO",
                     type: "details",
                     content: [
-                      "Maintained mission-critical Red Hat Enterprise Linux (RHEL ) server instances for state grid infrastructure.",
+                      "Maintained mission-critical Red Hat Enterprise Linux (RHEL) server instances for state grid infrastructure.",
                       "Configured Array Networks ADC / Load Balancers for high availability of critical web services.",
                       "Monitored end-to-end network health using Enlight 360 NMS and performed threat mitigation via Trend Micro Deep Security."
                     ]
@@ -526,10 +492,48 @@ export default function App() {
         </div>
       )}
 
+      {/* Contact Section */}
+      <section className="container animate-item" style={{ marginTop: '60px' }}>
+        <div className="glass-section" style={{ textAlign: 'center', padding: '40px 20px' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>
+            Let's <span className="gradient-text">Connect</span>
+          </h2>
+          <p style={{ color: '#c084fc', fontSize: '0.9rem', marginTop: '6px', marginBottom: '30px' }}>
+            Open for IT Infrastructure Opportunities, Technical Collaborations & Infrastructure Consulting
+          </p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '20px',
+            maxWidth: '900px',
+            margin: '0 auto'
+          }}>
+            <a href="mailto:jaynitmishra6@gmail.com" className="stat-card" style={{ padding: '20px', textDecoration: 'none', display: 'block' }}>
+              <div style={{ fontSize: '1.8rem', marginBottom: '8px' }}>✉️</div>
+              <h4 style={{ color: '#38bdf8', fontSize: '1rem', fontWeight: '700' }}>Email Me</h4>
+              <p style={{ color: '#d1d5db', fontSize: '0.85rem', marginTop: '4px' }}>jaynitmishra6@gmail.com</p>
+            </a>
+
+            <a href="tel:+917778915737" className="stat-card" style={{ padding: '20px', textDecoration: 'none', display: 'block' }}>
+              <div style={{ fontSize: '1.8rem', marginBottom: '8px' }}>📞</div>
+              <h4 style={{ color: '#38bdf8', fontSize: '1rem', fontWeight: '700' }}>Call / WhatsApp</h4>
+              <p style={{ color: '#d1d5db', fontSize: '0.85rem', marginTop: '4px' }}>+91 7778915737</p>
+            </a>
+
+            <div className="stat-card" style={{ padding: '20px' }}>
+              <div style={{ fontSize: '1.8rem', marginBottom: '8px' }}>📍</div>
+              <h4 style={{ color: '#38bdf8', fontSize: '1rem', fontWeight: '700' }}>Location</h4>
+              <p style={{ color: '#d1d5db', fontSize: '0.85rem', marginTop: '4px' }}>Vadodara, Gujarat, India</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer id="contact" style={{ textAlign: 'center', padding: '60px 0 30px', color: '#94a3b8' }}>
+      <footer id="contact" style={{ textAlign: 'center', padding: '50px 0 30px', color: '#94a3b8' }}>
         <p>📍 Vadodara, Gujarat | 📞 +91 7778915737 | ✉️ jaynitmishra6@gmail.com</p>
-        <p style={{ marginTop: '10px', fontSize: '0.85rem' }}>© {new Date().getFullYear()} Jaynit R. Mishra</p>
+        <p style={{ marginTop: '10px', fontSize: '0.85rem' }}>© {new Date().getFullYear()} Jaynit R. Mishra. All rights reserved.</p>
       </footer>
     </div>
   );

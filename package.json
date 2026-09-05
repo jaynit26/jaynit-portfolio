@@ -10,8 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tsparticles/engine": "^4.4.0",
+    "@tsparticles/react": "^4.4.0",
+    "@tsparticles/slim": "^4.4.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.2.8",
+    "react-intersection-observer": "^11.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
