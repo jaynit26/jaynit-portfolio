@@ -56,7 +56,7 @@ const AchievementCounter = () => {
     { number: 25, suffix: "+", label: "Clients Served" },
     { number: 50, suffix: "+", label: "Projects Delivered" },
     { number: 150, suffix: "+", label: "Servers Managed" },
-    { number: 250, suffix: "+", label: "VMs Managed" },
+    { number: 230, suffix: "+", label: "VMs Managed" },
     { number: 20, suffix: "+", label: "Storage Systems" },
     { number: 8, suffix: "+", label: "OEM Partners" },
     { number: 99, suffix: "%", label: "Client Satisfaction" },
@@ -307,9 +307,9 @@ export default function App() {
                         </h4>
                         
                         <div style={{ marginBottom: '16px' }}>
-                          <h5 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
+                          <h4 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
                             Enterprise Cloud & Messaging Migration
-                          </h5>
+                          </h4>
                           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#d1d5db' }}>
                             <li><strong>M365 Cloud Migration:</strong> End-to-end migration of 250+ users to Microsoft 365, executed with near-zero business impact and minimal operational downtime.</li>
                             <li><strong>Tenant Administration & Security:</strong> Continuous M365 tenant management covering identity lifecycle, security baselines, Exchange Online, and compliance policies.</li>
@@ -318,9 +318,9 @@ export default function App() {
                         </div>
 
                         <div style={{ marginBottom: '16px' }}>
-                          <h5 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
+                          <h4 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
                             Hybrid Virtualization & Data Center Operations
-                          </h5>
+                          </h4>
                           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#d1d5db' }}>
                             <li><strong>Multi-Hypervisor Management:</strong> Engineering, high-availability cluster setup, performance tuning, and lifecycle upgrades for VMware vSphere/ESXi and Microsoft Hyper-V environments.</li>
                             <li><strong>Storage Infrastructure & Object Storage:</strong> Design, integration, and operational support for enterprise storage arrays, including Hitachi Content Platform (HCP) object storage and Synology NAS backup appliances.</li>
@@ -329,9 +329,9 @@ export default function App() {
                         </div>
 
                         <div style={{ marginBottom: '16px' }}>
-                          <h5 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
+                          <h4 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
                             Active Directory & Security Controls
-                          </h5>
+                          </h4>
                           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#d1d5db' }}>
                             <li><strong>Identity & Access Management (IAM):</strong> Centralized Active Directory management, spanning forest/domain upgrades, OU structural design, object lifecycle management, and strict RBAC enforcement.</li>
                             <li><strong>Hardened Security & Endpoint Protection:</strong> Enterprise endpoint protection across 10+ client tenants using CrowdStrike Falcon—enforcing security policies, threat hunting, and automated vulnerability patch management.</li>
@@ -341,9 +341,9 @@ export default function App() {
                         </div>
 
                         <div style={{ marginBottom: '16px' }}>
-                          <h5 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
+                          <h4 style={{ color: '#38bdf8', fontWeight: 'bold', marginBottom: '6px' }}>
                             System Availability & Managed Services
-                          </h5>
+                          </h4>
                           <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#d1d5db' }}>
                             <li><strong>Data Protection & Disaster Recovery:</strong> Architectural design and execution of backup retention plans, cross-site replication, and disaster recovery testing using NAS and enterprise storage.</li>
                             <li><strong>Unified Communications:</strong> Ongoing support and integration for enterprise Video Conferencing (VC) rooms and collaboration infrastructure.</li>
